@@ -1,0 +1,26 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# After the API deploys, copy its URL (https://hypoguard-api.onrender.com) into the static site:
+#   Dashboard → hypoguard-web → Environment → VITE_API_BASE_URL
+# Then set on the API: CORS_ORIGINS = that same static site URL (comma-list if multiple).
+
+services:
+  - type: web
+    name: hypoguard-api
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CORS_ORIGINS
+        sync: false
+
+  - type: web
+    name: hypoguard-web
+    runtime: static
+    rootDir: web
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -19,9 +20,13 @@ from hypoguard.models import HypoGuardInput  # noqa: E402
 
 app = FastAPI(title="HypoGuard API", version="1.0.0")
 
+_default_cors = "http://localhost:5173,http://127.0.0.1:5173"
+_cors_raw = os.environ.get("CORS_ORIGINS", _default_cors)
+_cors_origins = [o.strip() for o in _cors_raw.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,5 +1,13 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 
+/** Empty in dev (Vite proxy → :8000). On Render, set VITE_API_BASE_URL to your API origin, no trailing slash. */
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+
+function apiUrl(path) {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return API_BASE ? `${API_BASE}${p}` : p;
+}
+
 const LEVEL_STYLES = {
   low: {
     label: "Low",
@@ -987,7 +995,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/assess", {
+      const res = await fetch(apiUrl("/api/assess"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ payload }),
