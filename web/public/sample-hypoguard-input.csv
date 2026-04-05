@@ -1,0 +1,2 @@
+glucose_mg_dl,roc_mg_dl_per_min,local_hour,local_minute,insulin_type,insulin_units,insulin_minutes_since,meal_skipped_or_light,meal_minutes_since,meal_carbs_g,activity_intensity,activity_minutes_since,activity_duration_minutes,symptom_shakiness,symptom_sweating,symptom_confusion,symptom_hunger,sleep_quality_0_100,sleep_hours,stress_or_illness,historical_hypo_bias_0_100
+100,-1.2,14,0,rapid,5,75,1,180,20,moderate,90,45,1,0,0,1,60,7,0,30

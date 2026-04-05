@@ -1,0 +1,29 @@
+{
+  "glucose_mg_dl": 95,
+  "roc_mg_dl_per_min": -1.8,
+  "insulin_doses": [
+    { "type": "rapid", "units": 6, "minutes_since": 72 }
+  ],
+  "meal": {
+    "skipped_or_light": true,
+    "minutes_since": 180,
+    "carbs_g": 15
+  },
+  "activity": {
+    "minutes_since": 120,
+    "duration_minutes": 40,
+    "intensity": "moderate"
+  },
+  "local_hour": 15,
+  "local_minute": 30,
+  "symptoms": {
+    "shakiness": true,
+    "sweating": false,
+    "confusion": false,
+    "hunger": true
+  },
+  "sleep_quality_0_100": 55,
+  "sleep_hours": 5.5,
+  "stress_or_illness": false,
+  "historical_hypo_bias_0_100": 40
+}
